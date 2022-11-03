@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Mon objet connecté</title>
+    <link rel="stylesheet" href="/bootstrap-4.4.1-dist/css/bootstrap.css">
+  </head>
+  <body>
+    <h3>équipe :</h3>
+    <p>5A SAGI Projet IOT - El Asri Ayoub - Maataoui Yassine - Maaskri Mohammed - 2022/2023</p>
+  
+
+    <h3>Affichage de données du capteur de température: </h3>
+    <p>Température : <%= x_temperature %></p>
+    
+
+    <h3>Commander la LED : </h2>
+    <button value="Allumer LED " type="button" onclick="AllumerLed()"> Allumer LED</button>
+    <button value="Eteindre LED " type="button" onclick="EteindreLed()"> Eteindre LED</button>
+    <h3>Tableau de données</h3>
+
+    <table>
+    <thead>
+      <tr>
+        <th>LED Etat</th>
+        <th>Température</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% x_tableau_donnees.forEach(function(data_child) { %>
+        <tr>
+          <td><%= data_child.x_etat %></td>
+          <td><%= data_child.x_temperature%></td>
+          <td><%= data_child.x_date %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+    </table>
+
+    <!--données en courbe-->
+    <h2>Courbe de variation de temperature : </h2>
+    <canvas id="myChart" width="400" height="200"></canvas>
+
+    <footer>"El Asri Ayoub - Maataoui Yassine - Maaskri Mohammed"</footer>
+    <script src="/jquery-3.4.1.js"></script>
+    <script src="/bootstrap-4.4.1-dist/js/bootstrap.bundle.js"></script>
+    <script src="/Chart.bundle.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+
+    function AllumerLed(){
+      const http = new XMLHttpRequest();
+      const url  = "http://192.168.1.1:8080/AllumerLed";
+      http.open("GET",url);
+      http.send();
+    }
+
+    function EteindreLed(){
+      const http = new XMLHttpRequest();
+      const url  = "http://192.168.1.1:8080/EteindreLed";
+      http.open("GET",url);
+      http.send();
+    }
+
+    // "myChart" est l'id de la balise "<canvas>"
+    var myChart = new Chart('myChart', {
+      type: 'line',
+      data: {
+        labels: ['2021-01-11 09:48:37', '2021-01-11 09:48:43', '2021-01-11 09:48:49', '2021-01-11 09:48:55', '2021-01-11 09:49:01'],
+        datasets: [
+          {
+            label: 'Température',
+            data: [22, 22.5, 22.7, 22.9, 22.6],
+            yAxisID: 'A',
+            backgroundColor: 'rgba(255, 238, 186, 0.4)',
+            borderColor: 'rgba(255, 125, 0, 1)',
+            borderWidth: 1,
+            spanGaps: true
+          },
+          {
+            label: 'LED',
+            data: [1, 0, 0, 1, 1],
+            yAxisID: 'B',
+            backgroundColor: 'rgba(184, 218, 255, 0.4)',
+            borderColor: 'rgba(184, 218, 255, 1)',
+            borderWidth: 1,
+            spanGaps: true,
+            steppedLine: 'before'
+          }
+        ]
+      },
+      options: {
+        scales: {
+          xAxes: [{
+            type: 'time',
+            time: {
+              unit: 'minute'
+            }
+          }],
+          yAxes: [
+            {
+              id: 'A',
+              ticks: {
+                beginAtZero: true
+              }
+            },
+            {
+              id: 'B',
+              ticks: {
+                min: 0,
+                max: 2,
+                beginAtZero: true
+              }
+            }
+          ]
+        }
+      }
+    });
+    </script>
+    Et voici comment ajouter un point sur le graphique à la volée :
+    <script>
+    myChart.data.labels.push(x_tableau_donnees.x_date);
+    myChart.data.datasets[0].data.push(x_tableau_donnees.x_temperature);
+    myChart.data.datasets[1].data.push(x_tableau_donnees.x_etat);
+
+
+      /*
+      // Pour utiliser Socket.io (Partie 7 du TP), c'est comme ça :
+      const socket = io();
+
+      socket.on('connect', () => {
+        console.log('connexion établie')
+      });
+
+      // socket.on() permet de définir ce que l'on fait lorsque l'on reçoit un message du serveur
+      socket.on('hello', (counter) => {
+        console.log('hello ' + counter)
+      });
+      
+      // socket.emit() permet d'envoyer un message au serveur
+      let counter = 0;
+      setInterval(() => {
+        ++counter;
+        socket.emit('hey', { counter });
+      }, 1000);
+      */
+    </script>
+    
+  </body>
+</html>
