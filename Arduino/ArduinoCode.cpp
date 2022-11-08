@@ -16,7 +16,8 @@ void setup()
     mavoieserie.begin(9600);
 }
 
-void loop() {
+void loop() 
+{
     float valeur_brute = analogRead(A1) / 1023.0;
     tempValue = valeur_brute *190.0 ;
     if(tempValue > 30)
