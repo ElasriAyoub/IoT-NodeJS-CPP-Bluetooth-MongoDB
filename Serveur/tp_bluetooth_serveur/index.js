@@ -33,6 +33,7 @@ var TableDesDonnees = mongoose.model('TableDesDonnees', TableDesDonnees);
 
 // Créer une nouvel instance
 /*
+
 var nouvelle_donnee = new TableDesDonnees({x_temperature: '25' , x_etat: '1' });
 // Enregistrer le nouvel utilisateur dans la base de données MongoDB
 nouvelle_donnee.save(function (err) {
@@ -49,6 +50,7 @@ nouvelle_donnee.save(function (err) {
 // ------------------------------------------------------------------------------------------
 // DEBUT communication HTTP
 // ------------------------------------------------------------------------------------------
+
 
 
 // Voici comment envoyer et écouter des requêtes HTTP, ce qui nous permettra de communiquer avec d'autres appareils sur le réseau
