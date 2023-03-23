@@ -26,7 +26,6 @@ btSerial.on('data', function(buffer)
   }
 });
 
-
 btSerial.on('closed', function()
 {
   console.log('btSerial.on(closed): début');
@@ -41,7 +40,6 @@ btSerial.on('failure', function(err)
   console.log('btSerial.on(failure): err = ');
   console.log(err);
 });
-
 
 btSerial.on('found', function(address, name)
 {
