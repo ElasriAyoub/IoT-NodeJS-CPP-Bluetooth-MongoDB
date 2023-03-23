@@ -158,6 +158,7 @@ function envoyerHTTP(x_etat,x_temperature)
 }
 
 
+
 function envoyerMessagesRaspiArdui(msg)
 {
   btSerial.write(new Buffer(msg,'utf-8'),function(err,bytesWritten){
