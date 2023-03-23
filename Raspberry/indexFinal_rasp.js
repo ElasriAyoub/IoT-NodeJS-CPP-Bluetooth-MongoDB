@@ -6,6 +6,7 @@ var adresse_ip_et_port_du_serveur = 'http://192.168.1.52:3000';
 var x_etat = 0 ;
 var x_temperature = 0;
 
+
 var btSerial = new (require('bluetooth-serial-port')).BluetoothSerialPort();
 
 btSerial.on('data', function(buffer)
