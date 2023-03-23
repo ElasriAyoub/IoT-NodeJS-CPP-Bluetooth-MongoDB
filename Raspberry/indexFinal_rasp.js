@@ -1,7 +1,6 @@
 console.log("index.js: début");
 const http = require('http');
 
-
 var adresse_mac_du_module_bluetooth = '98:D3:B1:FD:90:40'
 var adresse_ip_et_port_du_serveur = 'http://192.168.1.52:3000';
 var x_etat = 0 ;
