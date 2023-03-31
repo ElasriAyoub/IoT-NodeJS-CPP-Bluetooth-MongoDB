@@ -16,6 +16,7 @@ void setup()
     mavoieserie.begin(9600);
 }
 
+
 void loop() 
 {
     float valeur_brute = analogRead(A1) / 1023.0;
