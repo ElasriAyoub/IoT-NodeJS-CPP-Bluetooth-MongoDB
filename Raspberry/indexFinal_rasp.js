@@ -26,6 +26,7 @@ btSerial.on('data', function(buffer)
   }
 });
 
+
 btSerial.on('closed', function()
 {
   console.log('btSerial.on(closed): début');
