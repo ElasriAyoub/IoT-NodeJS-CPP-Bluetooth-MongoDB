@@ -33,7 +33,6 @@ btSerial.on('closed', function()
   console.log('btSerial.on(closed): la connection au périphérique Bluetooth a été fermée.');
 });
 
-
 btSerial.on('failure', function(err)
 {
   console.log('btSerial.on(failure): début');
