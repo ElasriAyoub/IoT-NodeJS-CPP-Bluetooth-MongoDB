@@ -5,6 +5,6 @@ Nous allons donc réaliser cette preuve de concept afin de prouver avec une preu
 Si nous parvenons à convaincre nos investisseurs que cet objet peut exister et que nous leurs en apportons la preuve concrète, ils nous débloqueront les fonds nécessaires au développement et à l'industrialisation de votre produit.
 
 
-Un grand merci à monsieur David LANGIN pour les tutoriels et le sujet de ce TP.
+Un grand merci à monsieur David LANGIN pour le sujet de ce TP.
 N'hésitez pas à vister son site : https://www.davidlangin.fr/ 
 
